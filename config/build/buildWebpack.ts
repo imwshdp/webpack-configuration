@@ -5,7 +5,7 @@ import { buildPlugins } from './buildPlugins';
 import { buildDevServer } from './buildDevServer';
 import { buildResolvers } from './buildResolvers';
 
-import type { BuildOptions } from './types/build.type';
+import type { BuildOptions } from './types/build.types';
 
 export function buildWebpack(options: BuildOptions): webpack.Configuration {
 	const { paths, mode } = options;

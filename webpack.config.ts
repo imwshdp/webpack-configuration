@@ -2,11 +2,12 @@ import path from 'path';
 import webpack from 'webpack';
 
 import { buildWebpack } from './config/build/buildWebpack';
-import { BuildPaths } from './config/build/types/build.type';
+import { BuildPaths } from './config/build/types/build.types';
 
 interface EnvVariablesType {
 	mode?: 'production' | 'development';
 	port?: number;
+	analyzer?: boolean;
 }
 
 export default (env: EnvVariablesType) => {
@@ -19,7 +20,8 @@ export default (env: EnvVariablesType) => {
 	const config: webpack.Configuration = buildWebpack({
 		mode: env.mode ?? 'development',
 		paths,
-		port: env.port ?? 3000
+		port: env.port ?? 3000,
+		analyzer: env.analyzer ?? false
 	});
 
 	return config;
