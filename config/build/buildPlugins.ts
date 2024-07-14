@@ -1,10 +1,11 @@
-import path from 'path';
 import webpack, { DefinePlugin } from 'webpack';
 import { Configuration } from 'webpack';
 
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
+import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 
 import type { BuildOptions } from './types/build.types';
 
@@ -22,6 +23,8 @@ export function buildPlugins({ mode, paths, analyzer, platform, port }: BuildOpt
 
 	if (isDev) {
 		plugins.push(new webpack.ProgressPlugin());
+		plugins.push(new ForkTsCheckerWebpackPlugin());
+		plugins.push(new ReactRefreshWebpackPlugin());
 	}
 
 	if (isProd) {

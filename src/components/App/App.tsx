@@ -24,11 +24,9 @@ const App = () => {
 					Shop
 				</Link>
 			</nav>
-
 			<section>
 				<span>PLATFORM={__PLATFORM__}</span>
 			</section>
-
 			<section className={styles.counter}>
 				<h1>{counter}</h1>
 				<button className={styles.button} type='button' onClick={increment}>
@@ -38,7 +36,6 @@ const App = () => {
 					-
 				</button>
 			</section>
-
 			<Outlet />
 		</div>
 	);
