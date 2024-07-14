@@ -9,7 +9,10 @@ const App = () => {
 	const increment = () => setCounter((prevCounter) => ++prevCounter);
 	const decrement = () => setCounter((prevCounter) => --prevCounter);
 
-	console.log('counter', counter);
+	if (__ENV__ === 'development') {
+		console.log('DEV MODE');
+		// addDevTools();
+	}
 
 	return (
 		<div className={styles.container}>
@@ -21,6 +24,10 @@ const App = () => {
 					Shop
 				</Link>
 			</nav>
+
+			<section>
+				<span>PLATFORM={__PLATFORM__}</span>
+			</section>
 
 			<section className={styles.counter}>
 				<h1>{counter}</h1>
