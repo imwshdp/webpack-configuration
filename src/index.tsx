@@ -1,9 +1,10 @@
-import { createRoot } from 'react-dom/client';
-import { App } from './components/App';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { AboutPage } from './pages/About';
-import { ShopPage } from './pages/Shop';
 import { Suspense } from 'react';
+import { createRoot } from 'react-dom/client';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
+import { App } from '@/components/App';
+import { AboutPage } from '@/pages/About';
+import { ShopPage } from '@/pages/Shop';
 
 const root = document.getElementById('root');
 if (!root) {
