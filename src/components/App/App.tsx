@@ -3,11 +3,24 @@ import { Link, Outlet } from 'react-router-dom';
 
 import styles from './App.module.scss';
 
+function sourceMapTest() {
+	sourceMapTest2();
+}
+
+function sourceMapTest2() {
+	throw new Error();
+}
+
 const App = () => {
 	const [counter, setCounter] = useState(0);
 
 	const increment = () => setCounter((prevCounter) => ++prevCounter);
 	const decrement = () => setCounter((prevCounter) => --prevCounter);
+
+	// source-map test
+	// const decrement = () => {
+	// 	return sourceMapTest();
+	// };
 
 	if (__ENV__ === 'development') {
 		console.log('DEV MODE');
