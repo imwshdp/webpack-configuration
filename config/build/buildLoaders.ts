@@ -3,12 +3,16 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import ReactRefreshTypeScript from 'react-refresh-typescript';
 
 import type { BuildOptions } from './types/build.types';
+import { buildBabelLoader } from './babel/buildBabelLoader';
 
 export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
 	const isDev = options.mode === 'development';
 
+	const babelLoader = buildBabelLoader(options);
+
 	const tsLoader = {
 		test: /\.tsx?$/,
+		exclude: /node_modules/,
 		use: [
 			{
 				loader: 'ts-loader',
@@ -19,8 +23,7 @@ export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
 					})
 				}
 			}
-		],
-		exclude: /node_modules/
+		]
 	};
 
 	const cssLoader = {
@@ -67,5 +70,11 @@ export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
 		]
 	};
 
-	return [tsLoader, stylesLoader, assetsLoader, svgrLoader];
+	return [
+		babelLoader,
+		// tsLoader,
+		stylesLoader,
+		assetsLoader,
+		svgrLoader
+	];
 }

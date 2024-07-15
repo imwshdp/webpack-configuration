@@ -15,8 +15,8 @@ const App = () => {
 	}
 
 	return (
-		<div className={styles.container}>
-			<nav className={styles.nav}>
+		<div className={styles.container} data-testid={'Container.Test.Id'}>
+			<nav className={styles.nav} data-testid={'Navigation.Test.Id'}>
 				<Link className={styles.link} to={'/about'}>
 					About
 				</Link>
@@ -24,6 +24,7 @@ const App = () => {
 					Shop
 				</Link>
 			</nav>
+
 			<section>
 				<span>PLATFORM={__PLATFORM__}</span>
 			</section>
@@ -36,6 +37,7 @@ const App = () => {
 					-
 				</button>
 			</section>
+
 			<Outlet />
 		</div>
 	);
